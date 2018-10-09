@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <meta name="generator" content="Hugo 0.48" />
+    
+    <!-- Mobile Specific Metas -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>API Authentication Using Passport.js and JSON Web Tokens</title>
+<<<<<<< HEAD
+    <link rel="icon" href="images/favicon.ico">
+
+    <!-- Twitter Bootstrs CSS -->
+    <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+    <!-- Ionicons Fonts Css -->
+    <link rel="stylesheet" href="plugins/ionicons/ionicons.min.css">
+    <!-- animate css -->
+    <link rel="stylesheet" href="plugins/animate-css/animate.css">
+    <!-- Hero area slider css-->
+    <link rel="stylesheet" href="plugins/slider/slider.css">
+    <!-- owl craousel css -->
+    <link rel="stylesheet" href="plugins/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="plugins/owl-carousel/owl.theme.css">
+    <!-- Fancybox -->
+    <link rel="stylesheet" href="plugins/facncybox/jquery.fancybox.css">
+    <!-- hover -->
+    <link rel="stylesheet" href="plugins/hover/hover-min.css">
+    <!-- template main css file -->
+    <link rel="stylesheet" href="css/style.css">
+=======
+    <link rel="icon" href="/images/favicon.ico">
+
+    <!-- Twitter Bootstrs CSS -->
+    <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
+    <!-- Ionicons Fonts Css -->
+    <link rel="stylesheet" href="/plugins/ionicons/ionicons.min.css">
+    <!-- animate css -->
+    <link rel="stylesheet" href="/plugins/animate-css/animate.css">
+    <!-- Hero area slider css-->
+    <link rel="stylesheet" href="/plugins/slider/slider.css">
+    <!-- owl craousel css -->
+    <link rel="stylesheet" href="/plugins/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="/plugins/owl-carousel/owl.theme.css">
+    <!-- Fancybox -->
+    <link rel="stylesheet" href="/plugins/facncybox/jquery.fancybox.css">
+    <!-- hover -->
+    <link rel="stylesheet" href="/plugins/hover/hover-min.css">
+    <!-- template main css file -->
+    <link rel="stylesheet" href="/css/style.css">
+>>>>>>> d1a85057527a1af7aca1cf9e8e14743c4392704a
+</head>
+
+<body>
+
+<section class="top-bar animated-header">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12">
+              <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<<<<<<< HEAD
+                  <a class="navbar-brand" href="">
+                      <img src="images/logo.png" alt="logo">
+=======
+                  <a class="navbar-brand" href="/">
+                      <img src="/images/logo.png" alt="logo">
+>>>>>>> d1a85057527a1af7aca1cf9e8e14743c4392704a
+                  </a>
+              </nav>
+          </div>
+      </div>
+  </div>
+</section>
+
+<section class="global-page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block">
+                    <h2>API Authentication Using Passport.js and JSON Web Tokens</h2>
+                    <div class="portfolio-meta">
+                        <span>Thursday, Sep 27, 2018</span>|
+                        <span> Tags:
+                            internet, tech
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="single-post">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                
+                <div class="post-img">
+<<<<<<< HEAD
+                    <img class="img-fluid" alt="" src="images/blog/post-2.jpg">
+=======
+                    <img class="img-fluid" alt="" src="/images/blog/post-2.jpg">
+>>>>>>> d1a85057527a1af7aca1cf9e8e14743c4392704a
+                </div>
+                
+                <div class="post-content">
+                    
+
+<h1 id="introduction">Introduction</h1>
+
+<p>In this post I will walk you through setting up authentication to your node.js web app using JSON web tokens and the Passport.js local strategy.</p>
+
+<p>We&rsquo;ll start off by installing a number of dependencies</p>
+
+<p><pre style="display: inline-block;
+    background-color: #29292E;
+    padding-right: 40px;
+    font-size: 16px;
+    color: #a6e22e;"}>
+  <code>
+    npm i express mongoose body-parser passport passport-local passport-local-mongoose jsonwebtokens
+  </code>
+</pre>
+<br /></p>
+
+<ul>
+<li><p>express: Node.js framework.</p></li>
+
+<li><p>mongoose: MongoDb Object relational mappper.</p></li>
+
+<li><p>body-parser: allows us to retrieve request data.</p></li>
+
+<li><p>passport.js: Authentication middleware.</p></li>
+
+<li><p>passport-local: strategy for authenticating with a username and password.</p></li>
+
+<li><p>passport-local-mongoose:  Mongoose plugin that simplifies building username and password login with Passport.</p></li>
+
+<li><p>jsonwebtoken: let&rsquo;s us generate and verify a token.</p></li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="create-the-user-model">Create the User Model</h2>
+
+<p>We&rsquo;ll start off by creating our user model. In the root directory create a new folder called models and in it create a User.js file.</p>
+
+<p>Since we are using Passport.js local strategy in our web application we do not need to specify password to our UserSchema as Passport will automatically hash our password and store the hash and salt into our database.</p>
+
+<p>The generateAuthToken method is what we will use in our routes to generate a new token.</p>
+
+<p><br /></p>
+
+<h2 id="connect-to-mongodb">Connect to mongoDB</h2>
+
+<p>For our Database, we will use <a href="https://mlab.com/">mLab</a> which makes it very easy to get up and running with a simple MongoDB database at no extra cost.</p>
+
+<p>In the root folder create a db folder and in it a moongose.js file</p>
+
+<h5 id="mongoose-js">mongoose.js</h5>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis expedita repellendus laboriosam aliquid. Neque doloribus ea, id reprehenderit alias saepe debitis eligendi molestias odit, nesciunt rem. Dolorem saepe, provident dolore nesciunt laudantium nostrum enim natus veritatis harum maxime et iure ratione, nulla. Minus excepturi commodi tempore voluptate. Blanditiis similique dolor asperiores ex excepturi perspiciatis, dolores id esse. Voluptate beatae nesciunt cum esse ratione officiis necessitatibus blanditiis ea, laboriosam fugit vero maxime? Voluptatum illo dolorum autem pariatur quisquam. Voluptates soluta culpa necessitatibus veritatis tempora incidunt doloribus placeat repellat et facilis eum sapiente fugit numquam aut, laboriosam aspernatur, esse, magnam excepturi repudiandae amet voluptas nulla quidem. Veritatis nisi consequuntur saepe qui quisquam dignissimos assumenda, iusto odio. Dignissimos reprehenderit esse iusto cupiditate nisi enim, animi similique itaque, perspiciatis error qui. Aperiam, architecto provident.</p>
+
+<ol>
+<li>Ipsum dolor sit amet.</li>
+<li>Lorem sit amet.</li>
+<li>Lorem ipsum dolor sit amet.</li>
+<li>Lorem ipsum dolor amet.</li>
+</ol>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus nostrum consectetur voluptatibus, odio ea ab distinctio, nulla asperiores facere sequi dolorum molestiae magni sed velit officia rerum illo necessitatibus consequatur maiores magnam possimus voluptas suscipit praesentium iste! Praesentium, modi, illum. Sint quis eos expedita porro voluptatum reiciendis minus vitae atque deleniti eligendi nulla, dolorem adipisci, assumenda sunt modi suscipit inventore hic nostrum veniam, ea accusantium quisquam! Ipsum odio, ducimus magnam nam ad quaerat soluta, ab laudantium beatae eius iusto fugit blanditiis laboriosam cupiditate dolor aut nulla a quam dolores? Unde, sunt, explicabo sapiente quos reiciendis iste fuga atque esse voluptatem.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Call To Action Section Start -->
+<section id="call-to-action">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block">
+                    
+                    <a href="/contact" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms">Contact me</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- Call To Action Section End -->
+
+
+<!-- Footer Section Start -->
+<footer id="footer">
+    <div class="container">
+        <div class="row content-justify-between">
+            <div class="col-md-8 col-12 text-center text-lg-left text-md-left">
+                <p class="copyright">Copyright: jameskamana.com
+                    <span>
+                        <script>document.write(new Date().getFullYear())</script>
+                    </span>
+                </p>
+            </div>
+            <div class="col-md-4 col-12">
+                <!-- Social Media -->
+                <ul class="social text-center text-md-right text-lg-right">
+                    <li>
+                        <a href="https://codepen.io/JayKamana/" class="codepen">
+                            <i class="ion-social-codepen"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/JayKamana" class="twitter">
+                            <i class="ion-social-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/JayKamana" class="github">
+                            <i class="ion-social-github"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/jameskamana/" class="linkedin">
+                            <i class="ion-social-linkedin"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- footer section end -->
+
+<!-- jquery -->
+<<<<<<< HEAD
+<script src="plugins/jQurey/jquery.min.js"></script>
+<!-- Form Validation -->
+<script src="plugins/form-validation/jquery.form.js"></script>
+<script src="plugins/form-validation/jquery.validate.min.js"></script>
+<!-- owl carouserl js -->
+<script src="plugins/owl-carousel/owl.carousel.min.js"></script>
+<!-- bootstrap js -->
+<script src="plugins/bootstrap/bootstrap.min.js"></script>
+<!-- wow js -->
+<script src="plugins/wow-js/wow.min.js"></script>
+<!-- slider js -->
+<script src="plugins/slider/slider.js"></script>
+<!-- Fancybox -->
+<script src="plugins/facncybox/jquery.fancybox.js"></script>
+<!-- template main js -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+<script src="js/main.js"></script>
+=======
+<script src="/plugins/jQurey/jquery.min.js"></script>
+<!-- Form Validation -->
+<script src="/plugins/form-validation/jquery.form.js"></script>
+<script src="/plugins/form-validation/jquery.validate.min.js"></script>
+<!-- owl carouserl js -->
+<script src="/plugins/owl-carousel/owl.carousel.min.js"></script>
+<!-- bootstrap js -->
+<script src="/plugins/bootstrap/bootstrap.min.js"></script>
+<!-- wow js -->
+<script src="/plugins/wow-js/wow.min.js"></script>
+<!-- slider js -->
+<script src="/plugins/slider/slider.js"></script>
+<!-- Fancybox -->
+<script src="/plugins/facncybox/jquery.fancybox.js"></script>
+<!-- template main js -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+<script src="/js/main.js"></script>
+>>>>>>> d1a85057527a1af7aca1cf9e8e14743c4392704a
+</body>
+
+</html>
